@@ -1,15 +1,14 @@
 package com.example.qualityassuranceprototype.Model;
 
 public class Employee {
+
     private String fistName;
     private String lastName;
-    private boolean isConsultant;
 
 
-    public Employee(String fistName, String lastName, boolean isConsultant) {
+    public Employee(String fistName, String lastName) {
         this.fistName = fistName;
         this.lastName = lastName;
-        this.isConsultant = isConsultant;
     }
 
     public String getFistName() {
@@ -26,13 +25,5 @@ public class Employee {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public boolean isConsultant() {
-        return isConsultant;
-    }
-
-    public void setConsultant(boolean consultant) {
-        isConsultant = consultant;
     }
 }

@@ -13,6 +13,7 @@
 </head>
 <body>
 <h1>Consultants</h1>
+<button onclick="window.location.href='/'">Back to Home</button>
 
 <div th:if="${consultants == null or #lists.isEmpty(consultants)}">
     <p class="empty">No consultants available.</p>

@@ -22,6 +22,14 @@ public class ConsultantService {
         return consultantRepository.getReferenceById(id);
     }
 
+    public void deleteConsultantById(Long id) {
+        consultantRepository.deleteById(id);
+    }
+
+    public void deleteAllConsultants() {
+        consultantRepository.deleteAll();
+    }
+
     /**
      * Adds a new consultant to the repository and returns the generated ID.
      * @param consultant

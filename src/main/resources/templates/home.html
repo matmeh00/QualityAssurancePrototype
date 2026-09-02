@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>My Simple Thymeleaf Site</title>
+    <title>Add Consultant</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; background-color: #f4f4f9; }
-        h1 { color: #333; }
-        p { color: #666; }
+        body { font-family: Arial, sans-serif; margin: 1.5rem; background-color: #f4f4f9; }
+        form { display: grid; gap: 0.75rem; max-width: 24rem; }
+        label { font-weight: bold; }
+        input, button { font: inherit; padding: 0.5rem; }
     </style>
 </head>
 <body>
-
-<!-- Dynamically displaying a variable from the controller -->
-<h1 th:text="${welcomeMessage}">Welcome Heading</h1>
-
-<!-- Dynamically displaying employee's full name -->
-<h1 th:text="${firstName} + ' ' + ${lastName}">Employee Name</h1>
-
-
-<h1 th:text="${name}">Employee Name</h1>
-
-
-<p>This page is powered by Spring Boot and Thymeleaf!</p>
-
+<h1>Add Consultant</h1>
+<form th:action="@{/}" method="post">
+    <div>
+        <label for="firstName">First name</label>
+        <input id="firstName" name="firstName" type="text" required>
+    </div>
+    <div>
+        <label for="lastName">Last name</label>
+        <input id="lastName" name="lastName" type="text" required>
+    </div>
+    <button type="submit">Add consultant</button>
+</form>
 </body>
 </html>

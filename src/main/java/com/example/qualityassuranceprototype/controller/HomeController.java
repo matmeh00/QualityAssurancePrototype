@@ -5,7 +5,8 @@ import com.example.qualityassuranceprototype.service.ConsultantService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HomeController {
@@ -18,11 +19,15 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Model model) {
-        var consultant = new Consultant("Mathias", "Mehari");
-        model.addAttribute("employee", consultant);
-        model.addAttribute("name", consultant.getFirstName());
-        consultantService.addConsultant(consultant);
-        return "home";
+        return "home_page";
+    }
+
+    @PostMapping("/")
+    public String addConsultant(
+            @RequestParam String firstName,
+            @RequestParam String lastName) {
+        consultantService.addConsultant(new Consultant(firstName.trim(), lastName.trim()));
+        return "redirect:/consultants";
     }
 
     @GetMapping("/consultants")
@@ -30,5 +35,11 @@ public class HomeController {
         var consultants = consultantService.getAllConsultants();
         model.addAttribute("consultants", consultants);
         return "consultants";
+    }
+
+    @GetMapping("/deleteAllConsultants")
+    public String deleteAllConsultants() {
+        consultantService.deleteAllConsultants();
+        return "home";
     }
 }

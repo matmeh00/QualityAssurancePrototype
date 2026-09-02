@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quality Assurance</title>
+    <style>
+        :root {
+            color-scheme: light;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background: #f4f4f9;
+            color: #333;
+        }
+
+        .top-bar {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0 1.5rem;
+            background: #2f3b52;
+        }
+
+        .menu-item {
+            display: inline-block;
+            padding: 1rem 0.75rem;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .menu-item:hover,
+        .menu-item:focus-visible {
+            background: #465a7b;
+        }
+
+        main {
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+
+        .add-review {
+            display: inline-block;
+            padding: 0.75rem 1rem;
+            border-radius: 0.25rem;
+            background: #2f3b52;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .add-review:hover,
+        .add-review:focus-visible {
+            background: #465a7b;
+        }
+    </style>
+</head>
+<body>
+<nav class="top-bar" aria-label="Main navigation">
+    <a class="menu-item" th:href="@{/}">Home</a>
+    <a class="menu-item" th:href="@{/reviews}">Reviews</a>
+    <a class="menu-item" th:href="@{/consultants}">Consultants</a>
+</nav>
+
+<main>
+    <h1>Quality Assurance</h1>
+    <p>Manage consultant reviews and attributions.</p>
+    <a class="add-review" th:href="@{/reviews/new}">Add new review</a>
+</main>
+</body>
+</html>

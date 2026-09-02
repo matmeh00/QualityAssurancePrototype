@@ -1,8 +1,11 @@
-package com.example.qualityassuranceprototype.Model;
+package com.example.qualityassuranceprototype.entity;
 
 import java.time.LocalDate;
 
 public class Review {
+
+
+    private Long id;
     private Employee consultant;
     private Employee reviewer;
     private String reviewId;

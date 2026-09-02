@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Consultants</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 1.5rem; }
+        h1 { margin-bottom: 0.5rem; }
+        .consultant { margin-bottom: 1.25rem; }
+        .employees { margin-left: 1rem; }
+        .empty { color: #666; }
+    </style>
+</head>
+<body>
+<h1>Consultants</h1>
+
+<!-- If the controller supplies a 'consultants' attribute, iterate it -->
+<div th:if="${consultants == null}">
+    <p class="empty">No consultants available.</p>
+</div>
+
+<div th:if="${consultants}">
+    <ul>
+        <li th:each="consultant : ${consultants}" class="consultant">
+            <h2 th:text="${consultant.firstName}">Consultant Name</h2>
+            <p th:if="${consultant.title}" th:text="${consultant.title}"></p>
+
+            <p><strong>Employees / Attributions</strong></p>
+            <ul class="consultant">
+                <!-- iterate employees (common property name: employees) -->
+                <li th:each="consultant : ${consultant.employees}">
+                    <span th:text="${consultant.firstName}">Employee Name</span>
+                    -
+                    <span th:text="${employee.attribution != null} ? employee.attribution : (employee.attributions != null ? employee.attributions : employee)">Attribution</span>
+                </li>
+                <li th:if="${#lists.isEmpty(consultant.employees)}" class="empty">No employees assigned.</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<p><a th:href="@{/}">Back to home</a></p>
+
+</body>
+</html>

@@ -1,4 +1,4 @@
-package com.example.qualityassuranceprototype.Model;
+package com.example.qualityassuranceprototype.entity;
 
 public record Company() {
     private static int ID;

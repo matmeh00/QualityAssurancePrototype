@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Consultants</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 1.5rem; }
+        h1 { margin-bottom: 0.5rem; }
+        .consultant { margin-bottom: 1.25rem; }
+        .employees { margin-left: 1rem; }
+        .empty { color: #666; }
+    </style>
+</head>
+<body>
+<h1>Consultants</h1>
+
+<div th:if="${consultants == null or #lists.isEmpty(consultants)}">
+    <p class="empty">No consultants available.</p>
+</div>
+
+<div th:if="${consultants != null and !#lists.isEmpty(consultants)}">
+    <ul>
+        <li th:each="consultant : ${consultants}" class="consultant">
+            <h2 th:text="${consultant.firstName + ' ' + consultant.lastName}">Consultant Name</h2>
+        </li>
+    </ul>
+</div>
+
+<p><a th:href="@{/}">Back to home</a></p>
+
+</body>
+</html>

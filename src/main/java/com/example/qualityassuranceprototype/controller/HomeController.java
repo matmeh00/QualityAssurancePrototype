@@ -30,13 +30,6 @@ public class HomeController {
         return "redirect:/consultants";
     }
 
-    @GetMapping("/consultants")
-    public String consultants(Model model) {
-        var consultants = consultantService.getAllConsultants();
-        model.addAttribute("consultants", consultants);
-        return "consultants";
-    }
-
     @GetMapping("/deleteAllConsultants")
     public String deleteAllConsultants() {
         consultantService.deleteAllConsultants();

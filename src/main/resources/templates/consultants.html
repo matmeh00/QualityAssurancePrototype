@@ -4,16 +4,20 @@
     <meta charset="UTF-8">
     <title>Consultants</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 1.5rem; }
         h1 { margin-bottom: 0.5rem; }
         .consultant { margin-bottom: 1.25rem; }
         .employees { margin-left: 1rem; }
         .empty { color: #666; }
+        body { font-family: Arial, sans-serif; margin: 1.5rem; background-color: #f4f4f9; }
+        form { display: grid; gap: 0.75rem; max-width: 24rem; }
+        label { font-weight: bold; }
+        input, button { font: inherit; padding: 0.5rem; }
     </style>
+    <style th:replace="~{fragments/navbar :: navbar-styles}"></style>
 </head>
 <body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
 <h1>Consultants</h1>
-<button onclick="window.location.href='/'">Back to Home</button>
 
 <div th:if="${consultants == null or #lists.isEmpty(consultants)}">
     <p class="empty">No consultants available.</p>
@@ -26,8 +30,19 @@
         </li>
     </ul>
 </div>
-
-<p><a th:href="@{/}">Back to home</a></p>
+<!--<button onclick="window.location.href='/'">Back to home</button>-->
+<h1>Add Consultant</h1>
+<form th:action="@{/}" method="post">
+    <div>
+        <label for="firstName">First name</label>
+        <input id="firstName" name="firstName" type="text" required>
+    </div>
+    <div>
+        <label for="lastName">Last name</label>
+        <input id="lastName" name="lastName" type="text" required>
+    </div>
+    <button type="submit">Add consultant</button>
+</form>
 
 </body>
 </html>

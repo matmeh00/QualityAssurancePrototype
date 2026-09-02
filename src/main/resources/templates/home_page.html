@@ -16,27 +16,6 @@
             color: #333;
         }
 
-        .top-bar {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 0 1.5rem;
-            background: #2f3b52;
-        }
-
-        .menu-item {
-            display: inline-block;
-            padding: 1rem 0.75rem;
-            color: #fff;
-            text-decoration: none;
-            transition: background-color 0.2s ease;
-        }
-
-        .menu-item:hover,
-        .menu-item:focus-visible {
-            background: #465a7b;
-        }
-
         main {
             padding: 3rem 1.5rem;
             text-align: center;
@@ -56,13 +35,10 @@
             background: #465a7b;
         }
     </style>
+    <style th:replace="~{fragments/navbar :: navbar-styles}"></style>
 </head>
 <body>
-<nav class="top-bar" aria-label="Main navigation">
-    <a class="menu-item" th:href="@{/}">Home</a>
-    <a class="menu-item" th:href="@{/reviews}">Reviews</a>
-    <a class="menu-item" th:href="@{/consultants}">Consultants</a>
-</nav>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
 
 <main>
     <h1>Quality Assurance</h1>

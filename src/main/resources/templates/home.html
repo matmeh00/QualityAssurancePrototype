@@ -9,8 +9,10 @@
         label { font-weight: bold; }
         input, button { font: inherit; padding: 0.5rem; }
     </style>
+    <style th:replace="~{fragments/navbar :: navbar-styles}"></style>
 </head>
 <body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
 <h1>Add Consultant</h1>
 <form th:action="@{/}" method="post">
     <div>

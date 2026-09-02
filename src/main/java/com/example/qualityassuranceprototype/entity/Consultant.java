@@ -1,19 +1,56 @@
 package com.example.qualityassuranceprototype.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
-public class Consultant extends Employee {
+@Table(name="consultants", schema="quality-assurance-db")
+public class Consultant {
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "first_name")
+    private String firstName;
+    @Column(name = "last_name")
+    private String lastName;
+
+
+    protected Consultant() {
+
+    }
 
     public Consultant(String firstName, String lastName) {
-        super(firstName, lastName);
-        this.id = new Long(1);
+        this.setFirstName(firstName);
+        this.setLastName(lastName);
+        //this.id = new Long(1);
+        //this.id = 8L;
+    }
+
+    public Consultant(String firstName, String lastName, Long id) {
+        this.setFirstName(firstName);
+        this.setLastName(lastName);
+        //this.id = new Long(1);
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }

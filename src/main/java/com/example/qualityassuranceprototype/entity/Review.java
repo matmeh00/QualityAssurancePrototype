@@ -6,8 +6,8 @@ public class Review {
 
 
     private Long id;
-    private Employee consultant;
-    private Employee reviewer;
+    private Consultant consultant;
+    private Consultant reviewer;
     private String reviewId;
     private Company company;
     private LocalDate reviewDate;

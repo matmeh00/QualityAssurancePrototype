@@ -2,11 +2,12 @@ package com.example.qualityassuranceprototype.controller;
 
 import com.example.qualityassuranceprototype.entity.Consultant;
 import com.example.qualityassuranceprototype.service.ConsultantService;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 public class HomeController {
 
     private final ConsultantService consultantService;

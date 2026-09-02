@@ -22,7 +22,12 @@ public class ConsultantService {
         return consultantRepository.getReferenceById(id);
     }
 
-    public void addConsultant(Consultant employee) {
-        consultantRepository.saveAndFlush(employee);
+    /**
+     * Adds a new consultant to the repository and returns the generated ID.
+     * @param consultant
+     * @return
+     */
+    public Long addConsultant(Consultant consultant) {
+       return consultantRepository.saveAndFlush(consultant).getId();
     }
 }

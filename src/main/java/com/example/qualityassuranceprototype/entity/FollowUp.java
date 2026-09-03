@@ -42,4 +42,6 @@ public class FollowUp {
     private String positiveFeedback;
     private String negativeFeedback;
     private String otherComments;
+
+
 }

@@ -6,7 +6,7 @@
     <style>
         h1 { margin-bottom: 0.5rem; }
         .consultant { margin-bottom: 1.25rem; }
-        .employees { margin-left: 1rem; }
+        .salesPeople { margin-left: 1rem; }
         .empty { color: #666; }
         body { font-family: Arial, sans-serif; margin: 1.5rem; background-color: #f4f4f9; }
         form { display: grid; gap: 0.75rem; max-width: 24rem; }
@@ -32,7 +32,7 @@
 </div>
 <!--<button onclick="window.location.href='/'">Back to home</button>-->
 <h1>Add Consultant</h1>
-<form th:action="@{/}" method="post">
+<form th:action="@{/consultants}" method="post">
     <div>
         <label for="firstName">First name</label>
         <input id="firstName" name="firstName" type="text" required>

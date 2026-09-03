@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sales people</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        main {
+            padding: 1.5rem;
+        }
+
+        h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        .salesperson {
+            margin-bottom: 1.25rem;
+        }
+
+        .empty {
+            color: #666;
+        }
+
+        form {
+            display: grid;
+            gap: 0.75rem;
+            max-width: 24rem;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input,
+        button {
+            font: inherit;
+            padding: 0.5rem;
+        }
+    </style>
+    <style th:replace="~{fragments/navbar :: navbar-styles}"></style>
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<main>
+    <h1>Salespeople</h1>
+
+    <div th:if="${salespeople == null or #lists.isEmpty(salespeople)}">
+        <p class="empty">No salespeople available.</p>
+    </div>
+
+    <div th:if="${salespeople != null and !#lists.isEmpty(salespeople)}">
+        <ul>
+            <li th:each="salesperson : ${salespeople}" class="salesperson">
+                <h2 th:text="${salesperson.firstName + ' ' + salesperson.lastName}">
+                    Salesperson Name
+                </h2>
+            </li>
+        </ul>
+    </div>
+
+    <h2>Add Salesperson</h2>
+    <form th:action="@{/salespeople}" method="post">
+        <div>
+            <label for="firstName">First name</label>
+            <input id="firstName" name="firstName" type="text" required>
+        </div>
+        <div>
+            <label for="lastName">Last name</label>
+            <input id="lastName" name="lastName" type="text" required>
+        </div>
+        <button type="submit">Add salesperson</button>
+    </form>
+</main>
+</body>
+</html>

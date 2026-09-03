@@ -22,13 +22,6 @@ public class HomeController {
         return "home_page";
     }
 
-    @PostMapping("/")
-    public String addConsultant(
-            @RequestParam String firstName,
-            @RequestParam String lastName) {
-        consultantService.addConsultant(new Consultant(firstName.trim(), lastName.trim()));
-        return "redirect:/consultants";
-    }
 
     @GetMapping("/deleteAllConsultants")
     public String deleteAllConsultants() {

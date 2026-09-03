@@ -3,7 +3,7 @@ package com.example.qualityassuranceprototype.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="customers", schema="quality-assurance-db")
+@Table(name="customer", schema="quality-assurance-db")
 public class Customer {
 
     @Id

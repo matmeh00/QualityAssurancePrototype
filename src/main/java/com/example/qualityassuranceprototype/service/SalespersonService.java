@@ -14,21 +14,25 @@ public class SalespersonService {
         this.salespersonRepository = salespersonRepository;
     }
 
-    public void addSalesperson(Salesperson salesperson) {
-        salespersonRepository.saveAndFlush(salesperson);
-    }
-
-    public Salesperson addSalesperson(String firstName, String lastName) {
-        Salesperson salesperson = new Salesperson(firstName.trim(), lastName.trim());
+    public Salesperson addSalesperson(Salesperson salesperson) {
         return salespersonRepository.saveAndFlush(salesperson);
     }
 
-    public List<Salesperson> getAllSalespersons() {
+
+    public List<Salesperson> getAllSalesPeople() {
         return salespersonRepository.findAll();
     }
 
     public Salesperson getSalespersonById(Long id) {
         return salespersonRepository.getReferenceById(id);
+    }
+
+    public void deleteSalespersonById(Long id) {
+        salespersonRepository.deleteById(id);
+    }
+
+    public void deleteAllSalespersons() {
+        salespersonRepository.deleteAll();
     }
 
 }

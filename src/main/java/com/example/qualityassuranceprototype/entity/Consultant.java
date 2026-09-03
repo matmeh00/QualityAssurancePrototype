@@ -23,14 +23,11 @@ public class Consultant {
     public Consultant(String firstName, String lastName) {
         this.setFirstName(firstName);
         this.setLastName(lastName);
-        //this.id = new Long(1);
-        //this.id = 8L;
     }
 
     public Consultant(String firstName, String lastName, Long id) {
         this.setFirstName(firstName);
         this.setLastName(lastName);
-        //this.id = new Long(1);
         this.id = id;
     }
 

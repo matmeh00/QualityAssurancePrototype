@@ -1,17 +1,32 @@
 package com.example.qualityassuranceprototype.entity;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
-public class Review {
+@Entity
+@Table(name = "follow_ups")
+public class FollowUp {
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
+
+    @ManyToOne
+    @JoinColumn(name = "consultant_id")
     private Consultant consultant;
-    private Consultant reviewer;
-    private String reviewId;
-    private Company company;
-    private LocalDate reviewDate;
-    private LocalDate consultantInformed;
+
+    @ManyToOne
+    @JoinColumn(name = "salesperson_id")
+    private Salesperson salesperson;
+
+    private LocalDate date;
+    private LocalDate nextFollowUp;
 
     private String startup;
     private String results;
@@ -27,6 +42,4 @@ public class Review {
     private String positiveFeedback;
     private String negativeFeedback;
     private String otherComments;
-
-    private LocalDate nextFollowUp;
 }

@@ -16,7 +16,7 @@ public class Consultant {
     private String lastName;
 
 
-    protected Consultant() {
+    public Consultant() {
 
     }
 
@@ -33,6 +33,10 @@ public class Consultant {
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {

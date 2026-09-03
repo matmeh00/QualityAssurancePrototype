@@ -3,7 +3,7 @@ package com.example.qualityassuranceprototype.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "salesperson", schema = "quality-assurance-db")
+@Table(name = "salesperson")
 public class Salesperson {
 
     @Id
@@ -16,7 +16,7 @@ public class Salesperson {
     private String lastName;
 
 
-    protected Salesperson() {
+    public Salesperson() {
 
     }
 
@@ -49,5 +49,9 @@ public class Salesperson {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

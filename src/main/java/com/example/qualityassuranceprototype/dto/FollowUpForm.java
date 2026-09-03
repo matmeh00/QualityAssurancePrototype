@@ -1,6 +1,9 @@
-package com.example.qualityassuranceprototype.entity;
+package com.example.qualityassuranceprototype.dto;
 
-import jakarta.persistence.*;
+import com.example.qualityassuranceprototype.entity.Consultant;
+import com.example.qualityassuranceprototype.entity.Customer;
+import com.example.qualityassuranceprototype.entity.FollowUp;
+import com.example.qualityassuranceprototype.entity.Salesperson;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,28 +13,13 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity
-@Table(name = "follow_up")
-public class FollowUp {
+public class FollowUpForm {
 
+    private Long customerId;
+    private Long consultantId;
+    private Long salespersonId;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
-
-
-    @ManyToOne
-    @JoinColumn(name = "consultant_id")
-    private Consultant consultant;
-
-    @ManyToOne
-    @JoinColumn(name = "salesperson_id")
-    private Salesperson salesperson;
-    private LocalDate followUpDate;
+    private LocalDate date;
     private LocalDate nextFollowUp;
 
     private String startup;
@@ -49,15 +37,15 @@ public class FollowUp {
     private String negativeFeedback;
     private String otherComments;
 
-    public FollowUp(Consultant consultant, Salesperson salesperson, Customer customer,
-                    LocalDate followUpDate, LocalDate nextFollowUp, String startup,
-                    String results, String responsibility, String simplicity, String joy,
-                    String innovation, Integer consultantSatisfaction, Integer hiqSatisfaction, String improvements,
-                    String positiveFeedback, String negativeFeedback, String otherComments) {
-        this.customer = customer;
-        this.consultant = consultant;
-        this.salesperson = salesperson;
-        this.followUpDate = followUpDate;
+    public FollowUpForm(Long customerId, Long consultantId, Long salespersonId, LocalDate date,
+                        LocalDate nextFollowUp, String startup, String results, String responsibility,
+                        String simplicity, String joy, String innovation, Integer consultantSatisfaction,
+                        Integer hiqSatisfaction, String improvements, String positiveFeedback,
+                        String negativeFeedback, String otherComments) {
+        this.customerId = customerId;
+        this.consultantId = consultantId;
+        this.salespersonId = salespersonId;
+        this.date = date;
         this.nextFollowUp = nextFollowUp;
         this.startup = startup;
         this.results = results;
@@ -73,14 +61,25 @@ public class FollowUp {
         this.otherComments = otherComments;
     }
 
+    public FollowUp createFollowUp() {
+        var consultant = new Consultant();
+        consultant.setId(consultantId);
+        var salesperson = new Salesperson();
+        salesperson.setId(salespersonId);
+        var customer = new Customer();
+        customer.setId(customerId);
+        return new FollowUp(consultant, salesperson, customer, date, nextFollowUp, startup, results,
+                responsibility, simplicity, joy, innovation, consultantSatisfaction, hiqSatisfaction,
+                improvements, positiveFeedback, negativeFeedback, otherComments);
+    }
+
     @Override
     public String toString() {
-        return "FollowUp{" +
-                "id=" + id +
-                ", customer=" + customer +
-                ", consultant=" + consultant +
-                ", salesperson=" + salesperson +
-                ", followUpDate=" + followUpDate +
+        return "FollowUpForm{" +
+                "customerId=" + customerId +
+                ", consultantId=" + consultantId +
+                ", salespersonId=" + salespersonId +
+                ", date=" + date +
                 ", nextFollowUp=" + nextFollowUp +
                 ", startup='" + startup + '\'' +
                 ", results='" + results + '\'' +

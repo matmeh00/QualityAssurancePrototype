@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Create Follow-up</title>
+    <style>
+        body {
+            margin: 0;
+            background: #f4f4f9;
+            color: #333;
+            font-family: Arial, sans-serif;
+        }
+
+        main {
+            max-width: 48rem;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        form {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .form-row {
+            display: grid;
+            gap: 0.35rem;
+        }
+
+        .form-row-wide {
+            display: grid;
+            gap: 0.75rem;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input,
+        textarea,
+        button {
+            box-sizing: border-box;
+            font: inherit;
+            padding: 0.5rem;
+            width: 100%;
+        }
+
+        textarea {
+            min-height: 5rem;
+            resize: vertical;
+        }
+
+        button {
+            cursor: pointer;
+            background: #2f3b52;
+            border: 0;
+            border-radius: 0.25rem;
+            color: #fff;
+        }
+
+        button:hover,
+        button:focus-visible {
+            background: #465a7b;
+        }
+
+        @media (max-width: 40rem) {
+            .form-row-wide {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <style th:replace="~{fragments/navbar :: navbar-styles}"></style>
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<main>
+    <h1>Skapa uppföljning</h1>
+
+    <form th:action="@{/follow-ups}" method="post">
+        <div class="form-row-wide">
+            <div class="form-row">
+                <label for="customerId">Kund ID</label>
+                <input id="customerId" name="customerId" type="number" min="1" required>
+            </div>
+            <div class="form-row">
+                <label for="consultantId">Konsult ID</label>
+                <input id="consultantId" name="consultantId" type="number" min="1" required>
+            </div>
+            <div class="form-row">
+                <label for="salespersonId">Säljare ID</label>
+                <input id="salespersonId" name="salespersonId" type="number" min="1" required>
+            </div>
+        </div>
+
+        <div class="form-row-wide">
+            <div class="form-row">
+                <label for="followUpdate">Uppfölningsdatum</label>
+                <input id="followUpdate" name="followUpDate" type="date" required>
+            </div>
+            <div class="form-row">
+                <label for="nextFollowUp">Nästa uppföljning</label>
+                <input id="nextFollowUp" name="nextFollowUp" type="date">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <label for="startup">Uppstart</label>
+            <textarea id="startup" name="startup"></textarea>
+        </div>
+        <div class="form-row">
+            <label for="results">Resultat</label>
+            <textarea id="results" name="results"></textarea>
+        </div>
+        <div class="form-row">
+            <label for="responsibility">Ansvar</label>
+            <textarea id="responsibility" name="responsibility"></textarea>
+        </div>
+        <div class="form-row">
+            <label for="simplicity">Enkelhet</label>
+            <textarea id="simplicity" name="simplicity"></textarea>
+        </div>
+        <div class="form-row">
+            <label for="joy">Glädje</label>
+            <textarea id="joy" name="joy"></textarea>
+        </div>
+        <div class="form-row">
+            <label for="innovation">Innovation</label>
+            <textarea id="innovation" name="innovation"></textarea>
+        </div>
+
+        <div class="form-row-wide">
+            <div class="form-row">
+                <label for="consultantSatisfaction">Nöjdhet med konsult</label>
+                <input id="consultantSatisfaction" name="consultantSatisfaction" type="number" min="1">
+            </div>
+            <div class="form-row">
+                <label for="hiqSatisfaction">Nöjdhet med HiQ</label>
+                <input id="hiqSatisfaction" name="hiqSatisfaction" type="number" min="1">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <label for="improvements">Förbättringar</label>
+            <textarea id="improvements" name="improvements"></textarea>
+        </div>
+        <div class="form-row">
+            <label for="positiveFeedback">Positiv feedback</label>
+            <textarea id="positiveFeedback" name="positiveFeedback"></textarea>
+        </div>
+        <div class="form-row">
+            <label for="negativeFeedback">Negativ feedback</label>
+            <textarea id="negativeFeedback" name="negativeFeedback"></textarea>
+        </div>
+        <div class="form-row">
+            <label for="otherComments">Andra kommentarer</label>
+            <textarea id="otherComments" name="otherComments"></textarea>
+        </div>
+
+        <button type="submit">Skapa uppföljning</button>
+    </form>
+</main>
+</body>
+</html>

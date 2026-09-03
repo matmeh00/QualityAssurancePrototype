@@ -11,7 +11,7 @@ public class Customer {
     private Long id;
     private String name;
 
-    protected Customer() {
+    public Customer() {
     }
 
     public Customer(String name) {

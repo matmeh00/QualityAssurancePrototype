@@ -35,7 +35,7 @@ public class ConsultantService {
      * @param consultant
      * @return
      */
-    public Long addConsultant(Consultant consultant) {
-       return consultantRepository.saveAndFlush(consultant).getId();
+    public Consultant addConsultant(Consultant consultant) {
+       return consultantRepository.save(consultant);
     }
 }

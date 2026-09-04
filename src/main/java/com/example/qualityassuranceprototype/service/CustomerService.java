@@ -15,7 +15,7 @@ public class CustomerService {
     }
 
     public Customer addCustomer(Customer customer) {
-        return customerRepository.saveAndFlush(customer);
+        return customerRepository.save(customer);
     }
 
     public Customer getCustomerById(Long id) {

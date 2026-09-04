@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sales people</title>
+    <title>Säljare</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -49,33 +49,33 @@
 <div th:replace="~{fragments/navbar :: navbar}"></div>
 
 <main>
-    <h1>Salespeople</h1>
+    <h1>Säljare</h1>
 
     <div th:if="${salespeople == null or #lists.isEmpty(salespeople)}">
-        <p class="empty">No salespeople available.</p>
+        <p class="empty">Inga säljare tillgängliga</p>
     </div>
 
     <div th:if="${salespeople != null and !#lists.isEmpty(salespeople)}">
         <ul>
             <li th:each="salesperson : ${salespeople}" class="salesperson">
                 <h2 th:text="${salesperson.firstName + ' ' + salesperson.lastName}">
-                    Salesperson Name
+                    Säljarens namn
                 </h2>
             </li>
         </ul>
     </div>
 
-    <h2>Add Salesperson</h2>
+    <h2>Skapa en säljare</h2>
     <form th:action="@{/salespeople}" method="post">
         <div>
-            <label for="firstName">First name</label>
+            <label for="firstName">Förnamn</label>
             <input id="firstName" name="firstName" type="text" required>
         </div>
         <div>
-            <label for="lastName">Last name</label>
+            <label for="lastName">Efternamn</label>
             <input id="lastName" name="lastName" type="text" required>
         </div>
-        <button type="submit">Add salesperson</button>
+        <button type="submit">Lägg till säljare</button>
     </form>
 </main>
 </body>

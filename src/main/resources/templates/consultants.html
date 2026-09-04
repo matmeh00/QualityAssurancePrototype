@@ -8,41 +8,44 @@
         .consultant { margin-bottom: 1.25rem; }
         .salesPeople { margin-left: 1rem; }
         .empty { color: #666; }
-        body { font-family: Arial, sans-serif; margin: 1.5rem; background-color: #f4f4f9; }
+        body { font-family: Arial, sans-serif; margin: 0; background-color: #f4f4f9; }
         form { display: grid; gap: 0.75rem; max-width: 24rem; }
         label { font-weight: bold; }
         input, button { font: inherit; padding: 0.5rem; }
+        main { padding: 1.5rem; }
     </style>
     <style th:replace="~{fragments/navbar :: navbar-styles}"></style>
 </head>
 <body>
 <div th:replace="~{fragments/navbar :: navbar}"></div>
-<h1>Consultants</h1>
+<main>
+    <h1>Konsulter</h1>
 
-<div th:if="${consultants == null or #lists.isEmpty(consultants)}">
-    <p class="empty">No consultants available.</p>
-</div>
+    <div th:if="${consultants == null or #lists.isEmpty(consultants)}">
+        <p class="empty">Inga konsulter tillgängliga</p>
+    </div>
 
-<div th:if="${consultants != null and !#lists.isEmpty(consultants)}">
-    <ul>
-        <li th:each="consultant : ${consultants}" class="consultant">
-            <h2 th:text="${consultant.firstName + ' ' + consultant.lastName}">Consultant Name</h2>
-        </li>
-    </ul>
-</div>
-<!--<button onclick="window.location.href='/'">Back to home</button>-->
-<h1>Add Consultant</h1>
-<form th:action="@{/consultants}" method="post">
-    <div>
-        <label for="firstName">First name</label>
-        <input id="firstName" name="firstName" type="text" required>
+    <div th:if="${consultants != null and !#lists.isEmpty(consultants)}">
+        <ul>
+            <li th:each="consultant : ${consultants}" class="consultant">
+                <h2 th:text="${consultant.firstName + ' ' + consultant.lastName}">Konsultens namn</h2>
+            </li>
+        </ul>
     </div>
-    <div>
-        <label for="lastName">Last name</label>
-        <input id="lastName" name="lastName" type="text" required>
-    </div>
-    <button type="submit">Add consultant</button>
-</form>
+    <!--<button onclick="window.location.href='/'">Back to home</button>-->
+    <h1>Skapa en konsult</h1>
+    <form th:action="@{/consultants}" method="post">
+        <div>
+            <label for="firstName">Förnamn</label>
+            <input id="firstName" name="firstName" type="text" required>
+        </div>
+        <div>
+            <label for="lastName">Efternamn</label>
+            <input id="lastName" name="lastName" type="text" required>
+        </div>
+        <button type="submit">Lägg till konsult</button>
+    </form>
+</main>
 
 </body>
 </html>

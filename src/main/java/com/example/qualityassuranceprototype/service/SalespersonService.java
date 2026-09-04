@@ -15,7 +15,7 @@ public class SalespersonService {
     }
 
     public Salesperson addSalesperson(Salesperson salesperson) {
-        return salespersonRepository.saveAndFlush(salesperson);
+        return salespersonRepository.save(salesperson);
     }
 
 
